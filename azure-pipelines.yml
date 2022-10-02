@@ -39,4 +39,8 @@ steps:
       sed -i "s/{{tier}}/${{parameters.tier}}/" main.tf
       sed -i "s/{{version}}/${{parameters.version}}/" main.tf
       cat main.tf
-
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish MySQL Artifact'
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)/'
+      ArtifactName: 'mysql'
