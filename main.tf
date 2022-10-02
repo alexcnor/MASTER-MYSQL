@@ -13,6 +13,12 @@ terraform {
   }
 }
 
+provider "azurerm" {
+  subscription_id = "{{AzureSubscriptionID}}"
+
+  features {}
+}
+
 resource "azurerm_mysql_server" "mysql" {
   name                = "{{client}}-{{environment}}"
   location            = "eastus2"
