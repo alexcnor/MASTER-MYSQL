@@ -20,7 +20,7 @@ provider "azurerm" {
 }
 
 resource "azurerm_mysql_server" "mysql" {
-  name                = "{{client}}-{{environment}}"
+  name                = lower("{{client}}-{{environment}}")
   location            = "eastus2"
   resource_group_name = "{{resourceGroup}}"
 
