@@ -1,0 +1,42 @@
+trigger:
+  - none
+
+pr: none
+
+pool:
+  vmImage: ubuntu-latest
+
+parameters:
+  - name: client
+    type: string
+    default: 'null'
+  - name: environment
+    type: string
+    default: 'null'
+  - name: storage
+    type: number
+    default: 5000
+  - name: resourceGroup
+    type: string
+    default: 'null'
+  - name: tier
+    type: string
+    default: 'null'
+  - name: version
+    type: number
+    default: 8
+
+steps:
+  - script: | 
+      echo ${{parameters.client}}
+    displayName: Print Parameters
+  - script: |
+      ls -la
+      sed -i "s/{{client}}/${{parameters.client}}/" main.tf
+      sed -i "s/{{environment}}/${{parameters.environment}}/" main.tf
+      sed -i "s/{{storage}}/${{parameters.storage}}/" main.tf
+      sed -i "s/{{resourceGroup}}/${{parameters.resourceGroup}}/" main.tf
+      sed -i "s/{{tier}}/${{parameters.tier}}/" main.tf
+      sed -i "s/{{version}}/${{parameters.version}}/" main.tf
+      cat main.tf
+
