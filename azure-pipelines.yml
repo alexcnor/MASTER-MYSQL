@@ -23,8 +23,8 @@ parameters:
     type: string
     default: 'null'
   - name: version
-    type: number
-    default: 8
+    type: string
+    default: '8.0'
 
 steps:
   - script: | 
